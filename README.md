@@ -1,3 +1,3 @@
-[![Actions Status](https://xxx.execute-api.us-west-2.amazonaws.com/production/badge/herashchenkooleh/prometheus)](https://xxx.execute-api.us-west-2.amazonaws.com/production/results/herashchenkooleh/prometheus)
+![](https://github.com/herashchenkooleh/prometheus/workflows/ccpp.yml/badge.svg)
 
 prometheus
