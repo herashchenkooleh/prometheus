@@ -1,3 +1,3 @@
-![](https://github.com/herashchenkooleh/prometheus/workflows/ccpp.yml/badge.svg)
+![](https://github.com/herashchenkooleh/prometheus/workflows/ccpp/badge.svg)
 
 prometheus
