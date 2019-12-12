@@ -1,2 +1,3 @@
-[![Actions Status](https://github.com/herashchenkooleh/prometheus/workflows/badge.svg)](https://github.com/herashchenkooleh/prometheus/actions)
+[![Actions Status](https://xxx.execute-api.us-west-2.amazonaws.com/production/badge/herashchenkooleh/prometheus)](https://xxx.execute-api.us-west-2.amazonaws.com/production/results/herashchenkooleh/prometheus)
+
 prometheus
