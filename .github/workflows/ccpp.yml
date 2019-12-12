@@ -1,4 +1,4 @@
-name: Prometheus Build
+name: "Prometheus Build"
 
 on: [push]
 
