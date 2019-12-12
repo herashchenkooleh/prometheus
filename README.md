@@ -1,3 +1,3 @@
-![](https://github.com/herashchenkooleh/prometheus/workflows/badge.svg)
+![](https://github.com/herashchenkooleh/prometheus/Prometheus%20Build/badge.svg)
 
 prometheus
