@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(Prometheus.Core.Project VERSION 1.0.0 LANGUAGE CXX)
+project(Prometheus.Core.Project VERSION 1.0.0 LANGUAGES CXX)
 
 get_directory_property(IS_SUBPROJECT PARENT_DIRECTORY)
 
@@ -30,11 +30,11 @@ write_basic_package_version_file("${PROJECT_BINARY_DIR}/Prometheus.Core.Version.
 install(FILES "${PROJECT_BINARY_DIR}/Prometheus.Core.Version.cmake" DESTINATION share/Prometheus.Core/cmake)
 
 if(NOT Prometheus.Core.Testing)
-    message(STATUS "Тестирование проекта Mylib выключено")
+    message(STATUS "Тестирование проекта Prometheus.Core выключено")
 elseif(IS_SUBPROJECT)
-    message(STATUS "Mylib не тестируется в режиме подмодуля")
+    message(STATUS "Prometheus.Core не тестируется в режиме подмодуля")
 else()
-    add_subdirectory(test)
+    add_subdirectory(unit_tests)
 endif()
 
 if(NOT IS_SUBPROJECT)

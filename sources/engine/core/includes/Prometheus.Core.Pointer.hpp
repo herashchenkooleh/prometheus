@@ -10,27 +10,34 @@ namespace prometheus::core
         using type_ptr_t = type_t*;
         using const_type_ptr_t = type_t const*;
         using reference_ptr_t = reference*;
-        
+
     public:
         inline pointer() noexcept
             : m_reference(new reference{})
             , m_object(nullptr)
         {
         }
-        
+
+		inline pointer(type_ptr_t ptr) noexcept
+			: m_reference(new reference{})
+			, m_object(ptr)
+		{
+			m_reference->increment();
+		}
+
         inline pointer(pointer&& obj) noexcept
             : m_reference(std::exchange(obj.m_reference, nullptr))
             , m_object(std::exchange(obj.m_object, nullptr))
         {
         }
-        
+
         inline pointer(const pointer& obj) noexcept
             : m_reference(obj.m_reference)
             , m_object(obj.m_object)
         {
             m_reference->increment();
         }
-        
+
         inline pointer& operator=(pointer&& obj) noexcept
         {
             if(this != &obj)
@@ -40,7 +47,7 @@ namespace prometheus::core
             }
             return *this;
         }
-        
+
         inline pointer& operator=(const pointer& obj) noexcept
         {
             if(this != &obj)
@@ -54,42 +61,52 @@ namespace prometheus::core
             }
             return *this;
         }
-        
+
         inline ~pointer() noexcept
         {
             destruct();
         }
-        
+
         inline type_t& operator*() noexcept
         {
             return *m_object;
         }
-        
-        inline const type_t& operator() const noexcept
+
+        inline const type_t& operator*() const noexcept
         {
             return *m_object;
         }
-        
+
         inline type_ptr_t operator->() noexcept
         {
             return m_object;
         }
-        
+
         inline const_type_ptr_t operator->() const noexcept
         {
             return m_object;
         }
 
-        inline operator std::nullptr_t() noexcept
+		inline friend bool operator==(const pointer pointer, const std::nullptr_t& ptr) noexcept
+		{
+			return &(*pointer) == ptr;
+		}
+
+		inline friend bool operator!=(const pointer pointer, const std::nullptr_t& ptr) noexcept
+		{
+			return &(*pointer) != ptr;
+		}
+
+         inline operator std::nullptr_t() noexcept
         {
             return m_object;
         }
-        
+
         inline operator bool() noexcept
         {
             return m_object != nullptr;
         }
-        
+
     private:
         inline void initialize() noexcept
         {
@@ -108,7 +125,7 @@ namespace prometheus::core
                 delete m_reference;
             }
         }
-        
+
     private:
         reference_ptr_t m_reference;
         type_ptr_t m_object;
