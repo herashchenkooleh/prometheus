@@ -1,10 +1,10 @@
 find_package(Doxygen)
 
 if (Doxygen_FOUND)
-    if (NOT PROMETHEUS_CORE_DOXYGEN_LANGUAGE)
-        set(PROMETHEUS_CORE_DOXYGEN_LANGUAGE Russian)
+    if (NOT PROMETHEUS_ENGINE_CORE_DOXYGEN_LANGUAGE)
+        set(PROMETHEUS_ENGINE_CORE_DOXYGEN_LANGUAGE Russian)
     endif()
-    message(STATUS "Doxygen documentation will be generated in ${PROMETHEUS_CORE_DOXYGEN_LANGUAGE}")
+    message(STATUS "Doxygen documentation will be generated in ${PROMETHEUS_ENGINE_CORE_DOXYGEN_LANGUAGE}")
     configure_file(Doxyfile.in Doxyfile)
     add_custom_target(doc COMMAND ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile)
 endif ()
